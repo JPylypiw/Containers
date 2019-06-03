@@ -8,17 +8,15 @@ FROM        ubuntu:18.04 as libgcc
 
 ARG         alpine_version=3.9.4
 ARG         alpine_glibc_version=2.29-r0
-
-# extract libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
 ARG         alpine_pkg_glibc_image=ubuntu:18.04
 
 RUN         chmod +x /lib/x86_64-linux-gnu/libz.so.1.2.11
 
-FROM        alpine:${alpine_version}
+FROM        alpine:3.9.4
 
 LABEL       author="Pterodactyl Software" maintainer="support@pterodactyl.io"
 
-ARG         alpine_glibc_version
+ARG         alpine_glibc_version=2.29-r0
 ARG         vcs_ref
 ARG         image_version
 ARG         build_date
